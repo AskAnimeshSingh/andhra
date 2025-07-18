@@ -9187,3 +9187,15 @@
 #61 C:\\xampp\\htdocs\\andhra\\index.php(20): require_once('C:\\\\xampp\\\\htdocs...')
 #62 {main}
 "} 
+[2025-07-19 00:35:21] local.ERROR: Uncaught ReflectionException: Class "Tymon\JWTAuth\Middleware\GetUserFromToken" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionMethod->__construct('Tymon\\JWTAuth\\M...', 'handle')
+#1 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"Tymon\\JWTAuth\\Middleware\\GetUserFromToken\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionMethod->__construct('Tymon\\\\JWTAuth\\\\M...', 'handle')
+#1 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
