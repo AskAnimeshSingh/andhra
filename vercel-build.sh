@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Install Composer dependencies
+composer install --no-dev --optimize-autoloader
+
+# Generate application key if not exists
+php artisan key:generate --force
+
+# Clear and cache config
+php artisan config:clear
+php artisan config:cache
+
+# Clear and cache routes
+php artisan route:clear
+php artisan route:cache
+
+# Clear and cache views
+php artisan view:clear
+php artisan view:cache
+
+# Optimize the application
+php artisan optimize
+
+# Create storage directories if they don't exist
+mkdir -p storage/framework/cache
+mkdir -p storage/framework/sessions
+mkdir -p storage/framework/views
+mkdir -p storage/logs
+
+# Set proper permissions
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache 

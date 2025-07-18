@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Chef;
 use Illuminate\Support\Facades\Validator;
+use App\Services\FileUploadService;
 use Illuminate\Support\Facades\Auth;
 
 class ChefController extends Controller
@@ -40,9 +41,7 @@ class ChefController extends Controller
         $chef->branch_id = $admin->branch_id;
 
         if ($request->file('image') != "") {
-            $favicon = uniqid(time()) . '.' . $request->image->extension();
-            $request->image->move(public_path('uploads/chef/img/'), $favicon);
-            $favicon = "/public/uploads/chef/img/" . $favicon;
+            $favicon = FileUploadService::upload($request->image, 'uploads/chef/img');
         }
         // dd($favicon);
         $chef->image  = $favicon;
@@ -153,9 +152,7 @@ class ChefController extends Controller
 
 
         if ($request->file('image') != "") {
-            $favicon = uniqid(time()) . '.' . $request->image->extension();
-            $request->image->move(public_path('uploads/chef/img/'), $favicon);
-            $favicon = "/public/uploads/chef/img/" . $favicon;
+            $favicon = FileUploadService::upload($request->image, 'uploads/chef/img');
             $chef->image  = $favicon;
         }
         // dd($favicon);
